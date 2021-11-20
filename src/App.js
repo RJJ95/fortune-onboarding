@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import PrimaryMenu from "./components/sections/primary-menu/primary-menu";
+
+const menuItems = [
+  {
+    name: "Personal details",
+  },
+  {
+    name: "Online banking",
+  },
+  {
+    name: "Stocks",
+  },
+  {
+    name: "Crypto",
+  },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <PrimaryMenu menuItems={menuItems} />
     </div>
   );
 }

@@ -10,10 +10,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: ${({ theme }) => theme.font};
+  background-color: ${({ theme }) => theme.colors.whiteSmoke};
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 100;
+  font-weight: 300;
 }
 
 h1 {
