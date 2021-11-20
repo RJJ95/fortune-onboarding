@@ -7,3 +7,8 @@ export const NameContainer = styled.div`
 export const H1 = styled.h1`
   padding-bottom: 30px;
 `;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

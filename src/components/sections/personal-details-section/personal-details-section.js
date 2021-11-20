@@ -2,7 +2,14 @@ import { useState } from "react";
 import LabelledInput from "../../constructs/labelled-input/labelled-input";
 import Form from "../../primitives/form";
 import SectionWrapper from "../../primitives/section-wrapper";
-import { NameContainer, H1 } from "./personal-details-section-styles";
+import {
+  NameContainer,
+  H1,
+  ButtonGroup,
+} from "./personal-details-section-styles";
+import ButtonOutlined from "../../primitives/button-outlined";
+import ButtonSolid from "../../primitives/button-solid";
+import { theme } from "../../../config/theme";
 
 const PersonalDetailsSection = () => {
   const [firstName, setFirstName] = useState("");
@@ -39,6 +46,10 @@ const PersonalDetailsSection = () => {
           onChange={setEmail}
           disabled={false}
         />
+        <ButtonGroup>
+          <ButtonOutlined color={theme.colors.red}>Cancel</ButtonOutlined>
+          <ButtonSolid color={theme.colors.royalVessel}>Next</ButtonSolid>
+        </ButtonGroup>
       </Form>
     </SectionWrapper>
   );

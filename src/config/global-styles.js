@@ -37,7 +37,7 @@ button {
   padding: 15px 30px;
   border-radius: ${({ theme }) => theme.borderRadius};
   border: none;
-  box-shadow: none;
+  box-shadow: ${({ theme }) => theme.shadow};
   cursor: pointer;
 }
 
