@@ -1,5 +1,11 @@
-export const SectionWrapper = styled.div`
-  padding: 60px 80px;
-  background-color: ${({ theme }) => theme.props.colors.white};
-  border-radius: ${({ theme }) => theme.borderRadius};
+import styled from "styled-components";
+
+const SectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 75px;
 `;
+
+export default SectionWrapper;

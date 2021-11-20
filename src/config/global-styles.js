@@ -15,6 +15,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
+  margin: 0;
 }
 
 h1 {
@@ -48,6 +49,7 @@ input, select {
   border: none;
   color: ${({ theme }) => theme.colors.black};
   padding: 0 15px;
+  background-color: ${({ theme }) => theme.colors.whiteSmoke};
 }
 
 select {
