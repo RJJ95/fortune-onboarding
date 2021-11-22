@@ -23,6 +23,7 @@ export const LogoContainer = styled.div`
 export const MenuItemsContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
 
   a:not(:last-child) {
     padding-right: 50px;
