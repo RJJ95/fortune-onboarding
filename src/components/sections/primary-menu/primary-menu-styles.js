@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Wrapper = styled.nav`
   display: flex;
@@ -29,7 +29,15 @@ export const MenuItemsContainer = styled.div`
   }
 `;
 
-export const MenuItem = styled(Link)``;
+export const MenuItem = styled(NavLink)`
+  color: ${({ theme }) => theme.colors.quickSilver};
+  transition: ${({ theme }) => theme.transition};
+
+  &.active,
+  &:hover {
+    color: ${({ theme }) => theme.colors.black};
+  }
+`;
 
 export const VerticalLine = styled.div`
   border-left: 1px solid ${({ theme }) => theme.colors.silverMedal};
