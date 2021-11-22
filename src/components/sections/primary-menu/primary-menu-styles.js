@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 export const Wrapper = styled.nav`
   display: flex;
   margin: 0;
@@ -20,7 +22,7 @@ export const MenuItemsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const MenuItem = styled.a``;
+export const MenuItem = styled(Link)``;
 
 export const VerticalLine = styled.div`
   border-left: 1px solid ${({ theme }) => theme.colors.silverMedal};

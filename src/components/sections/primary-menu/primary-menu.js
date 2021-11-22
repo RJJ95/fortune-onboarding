@@ -15,7 +15,9 @@ const PrimaryMenu = ({ menuItems }) => (
     <VerticalLine />
     <MenuItemsContainer>
       {menuItems.map((menuItem, i) => (
-        <MenuItem key={i}>{menuItem.name}</MenuItem>
+        <MenuItem key={i} to={menuItem.link}>
+          {menuItem.name}
+        </MenuItem>
       ))}
     </MenuItemsContainer>
   </Wrapper>

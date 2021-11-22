@@ -1,28 +1,15 @@
 import "./App.css";
-import PersonalDetailsSection from "./components/sections/personal-details-section/personal-details-section";
-import PrimaryMenu from "./components/sections/primary-menu/primary-menu";
-
-const menuItems = [
-  {
-    name: "Personal details",
-  },
-  {
-    name: "Online banking",
-  },
-  {
-    name: "Stocks",
-  },
-  {
-    name: "Crypto",
-  },
-];
+import PersonalDetailsSection from "./components/sections/personal-details-section";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/functionals/layout";
 
 function App() {
   return (
-    <div>
-      <PrimaryMenu menuItems={menuItems} />
-      <PersonalDetailsSection />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<PersonalDetailsSection />} />
+      </Route>
+    </Routes>
   );
 }
 
