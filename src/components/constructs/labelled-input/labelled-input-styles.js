@@ -15,7 +15,7 @@ export const Input = styled.input`
 export const IconContainer = styled.div`
   position: absolute;
   right: 20px;
-  top: calc(50% - 8px);
+  top: calc(50% - 10px);
   cursor: pointer;
   height: 16px;
 `;
