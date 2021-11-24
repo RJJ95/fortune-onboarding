@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SectionWrapper from "../../primitives/section-wrapper";
 import SectionHeader from "../../primitives/section-header";
 import Form from "../../constructs/form";
@@ -6,16 +7,23 @@ import LabelledInput from "../../constructs/labelled-input/";
 import { ReactComponent as GenerateIbanIcon } from "../../../media/images/generate.svg";
 
 const AddBankAccountSection = () => {
+  const [bank, setBank] = useState("select");
+  const [iban, setIban] = useState("");
+  const [startingBalance, setStartingBalance] = useState(0);
   const formElements = [
     {
       label: "Select a bank",
-      placeholder: "",
+      placeholder: "Select",
       required: true,
-      value: "",
-      onChange: "",
+      value: bank,
+      onChange: setBank,
       disabled: "",
       type: "select",
       options: [
+        {
+          name: "Select",
+          value: "select",
+        },
         {
           name: "ING",
           value: "ing",
