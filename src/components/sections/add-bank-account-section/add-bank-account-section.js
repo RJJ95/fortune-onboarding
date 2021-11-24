@@ -3,6 +3,7 @@ import SectionHeader from "../../primitives/section-header";
 import Form from "../../constructs/form";
 import LabelledSelect from "../../constructs/labelled-select";
 import LabelledInput from "../../constructs/labelled-input/";
+import LabelledIbanInput from "../../constructs/labelled-iban-input/";
 
 const AddBankAccountSection = () => {
   const formElements = [
@@ -22,6 +23,15 @@ const AddBankAccountSection = () => {
       ],
     },
     {
+      label: "IBAN",
+      placeholder: "NL21INGB6684756000",
+      required: true,
+      value: "",
+      onChange: "",
+      disabled: "",
+      type: "iban",
+    },
+    {
       label: "Enter a starting balance",
       placeholder: "1000",
       required: true,
@@ -36,6 +46,8 @@ const AddBankAccountSection = () => {
     switch (type) {
       case "select":
         return LabelledSelect;
+      case "iban":
+        return LabelledIbanInput;
       default:
         return LabelledInput;
     }

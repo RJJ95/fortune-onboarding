@@ -5,6 +5,7 @@ export const FormWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: ${({ theme }) => theme.shadow};
+  min-width: 420px;
 `;
 
 export const ButtonGroup = styled.div`
