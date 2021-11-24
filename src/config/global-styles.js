@@ -50,6 +50,7 @@ input, select {
   color: ${({ theme }) => theme.colors.black};
   padding: 0 15px;
   background-color: ${({ theme }) => theme.colors.whiteSmoke};
+  font-family: ${({ theme }) => theme.font};
 }
 
 select {

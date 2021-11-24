@@ -15,6 +15,7 @@ const PersonalDetailsSection = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [birthday, setBirthday] = useState(0);
 
   return (
     <SectionWrapper>
@@ -45,6 +46,16 @@ const PersonalDetailsSection = () => {
           value={email}
           onChange={setEmail}
           disabled={false}
+          type="email"
+        />
+        <LabelledInput
+          label="Date of birth"
+          placeholder="dd/mm/yyyy"
+          required={true}
+          value={birthday}
+          onChange={setBirthday}
+          disabled={false}
+          type="date"
         />
         <ButtonGroup>
           <ButtonOutlined color={theme.colors.red}>Cancel</ButtonOutlined>

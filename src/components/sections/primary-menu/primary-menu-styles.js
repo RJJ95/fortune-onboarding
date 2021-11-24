@@ -11,6 +11,8 @@ export const Wrapper = styled.nav`
   background-color: ${({ theme }) => theme.colors.white};
   position: relative;
   min-height: 76px;
+  position: sticky;
+  top: 0;
 `;
 
 export const LogoContainer = styled.div`

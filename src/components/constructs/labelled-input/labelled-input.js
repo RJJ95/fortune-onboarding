@@ -7,16 +7,18 @@ const LabelledInput = ({
   value,
   onChange,
   disabled,
+  name,
 }) => (
   <Wrapper>
-    <label>{label}</label>
+    <label for={name}>{label}</label>
     <input
       type={type || "text"}
       placeholder={placeholder}
       required={required}
       value={value}
-      onChange={onChange}
+      onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
+      name={name}
     />
   </Wrapper>
 );
