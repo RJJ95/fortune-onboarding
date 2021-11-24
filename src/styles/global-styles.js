@@ -51,11 +51,13 @@ input, select {
   padding: 0 15px;
   background-color: ${({ theme }) => theme.colors.whiteSmoke};
   font-family: ${({ theme }) => theme.font};
+  box-sizing: border-box;
+  width: 100%;
+  
 }
 
 select {
   appearance: none;
-  width: 100%;
 }
 `;
 

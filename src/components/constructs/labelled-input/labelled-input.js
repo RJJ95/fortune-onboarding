@@ -1,4 +1,11 @@
-import { Wrapper, Input } from "./labelled-input-styles";
+import {
+  Wrapper,
+  Input,
+  IconContainer,
+  InputContainer,
+  TooltipContainer,
+  Tooltip,
+} from "./labelled-input-styles";
 const LabelledInput = ({
   label,
   type,
@@ -9,20 +16,26 @@ const LabelledInput = ({
   disabled,
   name,
   error,
+  Icon,
+  tooltipText,
 }) => (
   <Wrapper>
     <label htmlFor={name}>{label}</label>
-    <Input
-      type={type || "text"}
-      placeholder={placeholder}
-      required={required}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      disabled={disabled}
-      name={name}
-      error={error}
-      step="any"
-    />
+    <InputContainer>
+      <Input
+        type={type || "text"}
+        placeholder={placeholder}
+        required={required}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
+        name={name}
+        error={error}
+        step="any"
+      />
+      <IconContainer>{Icon}</IconContainer>
+      <Tooltip>{tooltipText}</Tooltip>
+    </InputContainer>
   </Wrapper>
 );
 

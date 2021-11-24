@@ -3,7 +3,7 @@ import SectionHeader from "../../primitives/section-header";
 import Form from "../../constructs/form";
 import LabelledSelect from "../../constructs/labelled-select";
 import LabelledInput from "../../constructs/labelled-input/";
-import LabelledIbanInput from "../../constructs/labelled-iban-input/";
+import { ReactComponent as GenerateIbanIcon } from "../../../media/images/generate.svg";
 
 const AddBankAccountSection = () => {
   const formElements = [
@@ -29,7 +29,9 @@ const AddBankAccountSection = () => {
       value: "",
       onChange: "",
       disabled: "",
-      type: "iban",
+      type: "text",
+      Icon: <GenerateIbanIcon onClick={generateIban} />,
+      tooltipText: "Generate",
     },
     {
       label: "Enter a starting balance",
@@ -42,12 +44,12 @@ const AddBankAccountSection = () => {
     },
   ];
 
+  function generateIban() {}
+
   function getFormElement(type) {
     switch (type) {
       case "select":
         return LabelledSelect;
-      case "iban":
-        return LabelledIbanInput;
       default:
         return LabelledInput;
     }
@@ -70,6 +72,8 @@ const AddBankAccountSection = () => {
               disabled={formElement.disabled}
               type={formElement.type}
               options={formElement.options}
+              tooltipText={formElement.tooltipText}
+              Icon={formElement.Icon}
             />
           );
         })}
