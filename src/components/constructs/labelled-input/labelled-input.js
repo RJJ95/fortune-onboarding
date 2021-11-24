@@ -1,4 +1,4 @@
-import { Wrapper } from "./labelled-input-styles";
+import { Wrapper, Input } from "./labelled-input-styles";
 const LabelledInput = ({
   label,
   type,
@@ -8,10 +8,11 @@ const LabelledInput = ({
   onChange,
   disabled,
   name,
+  error,
 }) => (
   <Wrapper>
-    <label for={name}>{label}</label>
-    <input
+    <label htmlFor={name}>{label}</label>
+    <Input
       type={type || "text"}
       placeholder={placeholder}
       required={required}
@@ -19,6 +20,7 @@ const LabelledInput = ({
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
       name={name}
+      error={error}
     />
   </Wrapper>
 );
