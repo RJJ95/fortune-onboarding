@@ -11,12 +11,3 @@ export const NameContainer = styled.div`
     padding-right: 10px;
   }
 `;
-
-export const H1 = styled.h1`
-  padding-bottom: 30px;
-`;
-
-export const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;

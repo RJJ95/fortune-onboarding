@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
 import LabelledInput from "../../constructs/labelled-input/labelled-input";
-import Form from "../../primitives/form";
 import SectionWrapper from "../../primitives/section-wrapper";
-import {
-  NameContainer,
-  H1,
-  ButtonGroup,
-} from "./personal-details-section-styles";
-import ButtonOutlined from "../../primitives/button-outlined";
-import ButtonSolid from "../../primitives/button-solid";
+import { NameContainer } from "./personal-details-section-styles";
+import SectionHeader from "../../primitives/section-header";
+import Form from "../../constructs/form";
+import { useNavigate } from "react-router-dom";
 
 const PersonalDetailsSection = () => {
   const [firstName, setFirstName] = useState("");
@@ -17,6 +13,8 @@ const PersonalDetailsSection = () => {
   const [birthday, setBirthday] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [emailIsInvalid, setEmailIsInvalid] = useState(false);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     validateForm();
@@ -40,21 +38,17 @@ const PersonalDetailsSection = () => {
   }
 
   function submitForm() {
-    console.log("executing function");
     validateEmail();
-    console.log("email is validated");
     if (!emailIsInvalid) {
       // Send data to backend
-      console.log("email is valid");
-    } else {
-      console.log("email is not valid");
+      navigate("/add-bank-account");
     }
   }
 
   return (
     <SectionWrapper>
-      <H1>Enter your personal details</H1>
-      <Form>
+      <SectionHeader>Enter your personal details</SectionHeader>
+      <Form isDisabled={isDisabled} submitForm={submitForm}>
         <NameContainer>
           <LabelledInput
             label="First name"
@@ -92,17 +86,6 @@ const PersonalDetailsSection = () => {
           disabled={false}
           type="date"
         />
-        <ButtonGroup>
-          <ButtonOutlined color="venetianRed">Cancel</ButtonOutlined>
-          <ButtonSolid
-            onClick={() => submitForm()}
-            disabled={isDisabled}
-            type="submit"
-            color="royalVessel"
-          >
-            Next
-          </ButtonSolid>
-        </ButtonGroup>
       </Form>
     </SectionWrapper>
   );

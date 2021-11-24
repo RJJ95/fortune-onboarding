@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
-const Form = styled.div`
+export const FormWrapper = styled.div`
   padding: 60px 80px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: ${({ theme }) => theme.shadow};
 `;
 
-export default Form;
+export const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

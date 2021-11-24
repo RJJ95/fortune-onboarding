@@ -21,6 +21,7 @@ const LabelledInput = ({
       disabled={disabled}
       name={name}
       error={error}
+      step="any"
     />
   </Wrapper>
 );
