@@ -9,6 +9,7 @@ const ButtonOutlined = styled.button`
   color: ${({ color, disabled, theme }) =>
     disabled ? theme.colors.silverMedal : theme.colors[color]};
   cursor: ${({ disabled }) => (disabled ? "no-drop" : "pointer")};
+  transition: ${({ theme }) => theme.transition};
 `;
 
 export default ButtonOutlined;

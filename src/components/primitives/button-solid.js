@@ -5,6 +5,7 @@ const ButtonSolid = styled.button`
     disabled ? theme.colors.silverMedal : theme.colors[color]};
   color: ${({ theme }) => theme.colors.white};
   cursor: ${({ disabled }) => (disabled ? "no-drop" : "pointer")};
+  transition: ${({ theme }) => theme.transition};
 `;
 
 export default ButtonSolid;

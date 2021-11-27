@@ -13,6 +13,7 @@ const PersonalDetailsSection = () => {
   const [birthday, setBirthday] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [emailIsInvalid, setEmailIsInvalid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   let navigate = useNavigate();
 
@@ -38,17 +39,26 @@ const PersonalDetailsSection = () => {
   }
 
   function submitForm() {
-    validateEmail();
-    if (!emailIsInvalid) {
-      // Send data to backend
-      navigate("/add-bank-account");
-    }
+    setIsLoading(true);
+    setIsDisabled(true);
+    setTimeout(() => {
+      validateEmail();
+      if (!emailIsInvalid) {
+        // Send data to backend
+        setIsLoading(false);
+        navigate("/add-bank-account");
+      }
+    }, 5000);
   }
 
   return (
     <SectionWrapper>
       <SectionHeader>Enter your personal details</SectionHeader>
-      <Form isDisabled={isDisabled} submitForm={submitForm}>
+      <Form
+        isDisabled={isDisabled}
+        submitForm={submitForm}
+        isLoading={isLoading}
+      >
         <NameContainer>
           <LabelledInput
             label="First name"
@@ -56,7 +66,7 @@ const PersonalDetailsSection = () => {
             required={true}
             value={firstName}
             onChange={setFirstName}
-            disabled={false}
+            disabled={isLoading}
           />
           <LabelledInput
             label="Last name"
@@ -64,7 +74,7 @@ const PersonalDetailsSection = () => {
             required={true}
             value={lastName}
             onChange={setLastName}
-            disabled={false}
+            disabled={isLoading}
           />
         </NameContainer>
         <LabelledInput
@@ -73,7 +83,7 @@ const PersonalDetailsSection = () => {
           required={true}
           value={email}
           onChange={setEmail}
-          disabled={false}
+          disabled={isLoading}
           type="email"
           error={emailIsInvalid}
         />
@@ -83,7 +93,7 @@ const PersonalDetailsSection = () => {
           required={true}
           value={birthday}
           onChange={setBirthday}
-          disabled={false}
+          disabled={isLoading}
           type="date"
         />
       </Form>
