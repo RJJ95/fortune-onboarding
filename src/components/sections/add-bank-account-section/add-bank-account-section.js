@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import SectionWrapper from "../../primitives/section-wrapper";
 import SectionHeader from "../../primitives/section-header";
 import Form from "../../constructs/form";
-import LabelledSelect from "../../constructs/labelled-select";
-import LabelledInput from "../../constructs/labelled-input/";
 import { ReactComponent as GenerateIbanIcon } from "../../../media/images/generate.svg";
 import { useNavigate } from "react-router-dom";
+import getFormElement from "../../../tools/getFormElement";
 
 const AddBankAccountSection = () => {
   const [bank, setBank] = useState("select");
@@ -79,15 +78,6 @@ const AddBankAccountSection = () => {
   }
 
   function generateIban() {}
-
-  function getFormElement(type) {
-    switch (type) {
-      case "select":
-        return LabelledSelect;
-      default:
-        return LabelledInput;
-    }
-  }
 
   return (
     <SectionWrapper>
