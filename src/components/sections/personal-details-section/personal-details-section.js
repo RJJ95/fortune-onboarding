@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import LabelledInput from "../../constructs/labelled-input/labelled-input";
 import SectionWrapper from "../../primitives/section-wrapper";
-import { NameContainer } from "./personal-details-section-styles";
 import SectionHeader from "../../primitives/section-header";
 import Form from "../../constructs/form";
 import { useNavigate } from "react-router-dom";
+import getFormElement from "../../../tools/getFormElement";
 
 const PersonalDetailsSection = () => {
   const [firstName, setFirstName] = useState("");
@@ -49,6 +48,45 @@ const PersonalDetailsSection = () => {
     }, 5000);
   }
 
+  const formElements = [
+    {
+      type: "name",
+      formElements: [
+        {
+          label: "First name",
+          placeholder: "Sherlock",
+          disabled: isLoading,
+          value: firstName,
+          onChange: setFirstName,
+        },
+        {
+          label: "Last name",
+          placeholder: "Holmes",
+          disabled: isLoading,
+          value: lastName,
+          onChange: setLastName,
+        },
+      ],
+    },
+    {
+      type: "email",
+      label: "Email",
+      placeholder: "s.holmes@britannica.co.uk",
+      value: email,
+      onChange: setEmail,
+      disabled: isLoading,
+      error: emailIsInvalid,
+    },
+    {
+      type: "date",
+      label: "Date of birth",
+      placeholder: "dd/mm/yyyy",
+      value: birthday,
+      onChange: setBirthday,
+      disabled: isLoading,
+    },
+  ];
+
   return (
     <SectionWrapper>
       <SectionHeader>Enter your personal details</SectionHeader>
@@ -57,43 +95,21 @@ const PersonalDetailsSection = () => {
         submitForm={submitForm}
         isLoading={isLoading}
       >
-        <NameContainer>
-          <LabelledInput
-            label="First name"
-            placeholder="Sherlock"
-            required={true}
-            value={firstName}
-            onChange={setFirstName}
-            disabled={isLoading}
-          />
-          <LabelledInput
-            label="Last name"
-            placeholder="Holmes"
-            required={true}
-            value={lastName}
-            onChange={setLastName}
-            disabled={isLoading}
-          />
-        </NameContainer>
-        <LabelledInput
-          label="Email"
-          placeholder="s.holmes@britannica.co.uk"
-          required={true}
-          value={email}
-          onChange={setEmail}
-          disabled={isLoading}
-          type="email"
-          error={emailIsInvalid}
-        />
-        <LabelledInput
-          label="Date of birth"
-          placeholder="dd/mm/yyyy"
-          required={true}
-          value={birthday}
-          onChange={setBirthday}
-          disabled={isLoading}
-          type="date"
-        />
+        {formElements.map((formElement, i) => {
+          const FormElement = getFormElement(formElement.type);
+          return (
+            <FormElement
+              key={i}
+              label={formElement.label}
+              placeholder={formElement.placeholder}
+              value={formElement.value}
+              onChange={formElement.onChange}
+              disabled={formElement.disabled}
+              type={formElement.type}
+              formElements={formElement.formElements}
+            />
+          );
+        })}
       </Form>
     </SectionWrapper>
   );
