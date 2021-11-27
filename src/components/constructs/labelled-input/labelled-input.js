@@ -4,6 +4,7 @@ import {
   IconContainer,
   InputContainer,
   Tooltip,
+  Label,
 } from "./labelled-input-styles";
 const LabelledInput = ({
   label,
@@ -19,7 +20,7 @@ const LabelledInput = ({
   tooltipText,
 }) => (
   <Wrapper>
-    <label htmlFor={name}>{label}</label>
+    <Label htmlFor={name}>{label}</Label>
     <InputContainer>
       <Input
         type={type || "text"}

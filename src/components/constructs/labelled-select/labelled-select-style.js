@@ -14,4 +14,5 @@ export const SelectIcon = styled(Icon)`
 
 export const SelectContainer = styled.div`
   position: relative;
+  margin-top: 5px;
 `;

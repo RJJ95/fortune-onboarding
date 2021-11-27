@@ -64,7 +64,12 @@ const AddStocksSection = () => {
     <SectiontWrapper>
       <SectionHeader>Add some stocks</SectionHeader>
       {stocks.map((stock, i) => (
-        <ExpandableForm key={i} formElements={formElements} data={stock} />
+        <ExpandableForm
+          key={i}
+          expanded={false}
+          formElements={formElements}
+          data={stock}
+        />
       ))}
     </SectiontWrapper>
   );

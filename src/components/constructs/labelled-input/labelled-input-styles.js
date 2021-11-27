@@ -39,3 +39,7 @@ export const InputContainer = styled.div`
     opacity: 1;
   }
 `;
+
+export const Label = styled.label`
+  margin-bottom: 5px;
+`;

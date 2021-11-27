@@ -26,7 +26,7 @@ const Form = ({ submitForm, isDisabled, formElements, isLoading }) => (
     })}
     <ButtonGroup>
       <ButtonOutlined disabled={isLoading} color="venetianRed">
-        Cancel
+        Skip
       </ButtonOutlined>
       <ButtonSolid
         onClick={() => submitForm()}

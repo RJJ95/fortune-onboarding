@@ -9,6 +9,7 @@ export const theme = {
     whiteSmoke: "#f8f8f8",
     venetianRed: "#D0021B",
     paleOrange: "#FFE5D3",
+    yellowGreen: "#7ED321",
   },
   borderRadius: "10px",
   shadow: "0 1px 1px 0 rgba(0, 0, 0, 0.5)",
