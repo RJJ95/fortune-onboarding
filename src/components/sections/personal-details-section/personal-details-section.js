@@ -3,7 +3,6 @@ import SectionWrapper from "../../primitives/section-wrapper";
 import SectionHeader from "../../primitives/section-header";
 import Form from "../../constructs/form";
 import { useNavigate } from "react-router-dom";
-import getFormElement from "../../../tools/getFormElement";
 
 const PersonalDetailsSection = () => {
   const [firstName, setFirstName] = useState("");
@@ -94,23 +93,8 @@ const PersonalDetailsSection = () => {
         isDisabled={isDisabled}
         submitForm={submitForm}
         isLoading={isLoading}
-      >
-        {formElements.map((formElement, i) => {
-          const FormElement = getFormElement(formElement.type);
-          return (
-            <FormElement
-              key={i}
-              label={formElement.label}
-              placeholder={formElement.placeholder}
-              value={formElement.value}
-              onChange={formElement.onChange}
-              disabled={formElement.disabled}
-              type={formElement.type}
-              formElements={formElement.formElements}
-            />
-          );
-        })}
-      </Form>
+        formElements={formElements}
+      />
     </SectionWrapper>
   );
 };

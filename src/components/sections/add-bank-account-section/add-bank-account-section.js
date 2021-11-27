@@ -19,10 +19,9 @@ const AddBankAccountSection = () => {
     {
       label: "Select a bank",
       placeholder: "Select",
-      required: true,
       value: bank,
       onChange: setBank,
-      disabled: "",
+      disabled: isLoading,
       type: "select",
       options: [
         {
@@ -38,21 +37,18 @@ const AddBankAccountSection = () => {
     {
       label: "IBAN",
       placeholder: "NL21INGB6684756000",
-      required: true,
       value: iban,
       onChange: setIban,
-      disabled: "",
-      type: "text",
+      disabled: isLoading,
       Icon: <GenerateIbanIcon onClick={generateIban} />,
       tooltipText: "Generate",
     },
     {
       label: "Enter a starting balance",
       placeholder: "1000",
-      required: true,
       value: startingBalance,
       onChange: setStartingBalance,
-      disabled: "",
+      disabled: isLoading,
       type: "number",
     },
   ];
@@ -86,26 +82,8 @@ const AddBankAccountSection = () => {
         isDisabled={isDisabled}
         submitForm={submitForm}
         isLoading={isLoading}
-      >
-        {formElements.map((formElement, i) => {
-          const FormElement = getFormElement(formElement.type);
-          return (
-            <FormElement
-              key={i}
-              label={formElement.label}
-              placeholder={formElement.placeholder}
-              required={formElement.required}
-              value={formElement.value}
-              onChange={formElement.onChange}
-              disabled={formElement.disabled}
-              type={formElement.type}
-              options={formElement.options}
-              tooltipText={formElement.tooltipText}
-              Icon={formElement.Icon}
-            />
-          );
-        })}
-      </Form>
+        formElements={formElements}
+      />
     </SectionWrapper>
   );
 };
