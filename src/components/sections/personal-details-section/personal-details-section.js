@@ -22,11 +22,9 @@ const PersonalDetailsSection = () => {
   });
 
   function validateForm() {
-    if (firstName && lastName && email && birthday) {
-      setIsDisabled(false);
-    } else {
-      setIsDisabled(true);
-    }
+    firstName && lastName && email && birthday
+      ? setIsDisabled(false)
+      : setIsDisabled(true);
   }
 
   function validateEmail() {
