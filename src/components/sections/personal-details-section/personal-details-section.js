@@ -3,6 +3,7 @@ import SectionWrapper from "../../primitives/section-wrapper";
 import SectionHeader from "../../primitives/section-header";
 import Form from "../../constructs/form";
 import { useNavigate } from "react-router-dom";
+import validateForm from "../../../tools/validateForm";
 
 const PersonalDetailsSection = () => {
   const [firstName, setFirstName] = useState("");
@@ -16,14 +17,8 @@ const PersonalDetailsSection = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    validateForm();
-  });
-
-  function validateForm() {
-    firstName && lastName && email && birthday
-      ? setIsDisabled(false)
-      : setIsDisabled(true);
-  }
+    validateForm([firstName, lastName, email, birthday], setIsDisabled);
+  }, [firstName, lastName, email, birthday]);
 
   function validateEmail() {
     const regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;

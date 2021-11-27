@@ -4,7 +4,7 @@ import SectionHeader from "../../primitives/section-header";
 import Form from "../../constructs/form";
 import { ReactComponent as GenerateIbanIcon } from "../../../media/images/generate.svg";
 import { useNavigate } from "react-router-dom";
-import getFormElement from "../../../tools/getFormElement";
+import validateForm from "../../../tools/validateForm";
 
 const AddBankAccountSection = () => {
   const [bank, setBank] = useState("select");
@@ -54,8 +54,8 @@ const AddBankAccountSection = () => {
   ];
 
   useEffect(() => {
-    validateForm();
-  });
+    validateForm([bank, iban, startingBalance], setIsDisabled);
+  }, [bank, iban, startingBalance]);
 
   function submitForm() {
     setIsLoading(true);
@@ -65,12 +65,6 @@ const AddBankAccountSection = () => {
       setIsLoading(false);
       navigate("/stocks");
     }, 5000);
-  }
-
-  function validateForm() {
-    bank && iban && startingBalance
-      ? setIsDisabled(false)
-      : setIsDisabled(true);
   }
 
   function generateIban() {}
