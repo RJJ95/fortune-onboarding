@@ -3,13 +3,17 @@ import PersonalDetailsSection from "./components/sections/personal-details-secti
 import AddBankAccountSection from "./components/sections/add-bank-account-section";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/functionals/layout";
+import routes from "./config/routes";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<PersonalDetailsSection />} />
-        <Route path="/online-banking" element={<AddBankAccountSection />} />
+        <Route
+          path={routes.onlineBanking.path}
+          element={<AddBankAccountSection />}
+        />
       </Route>
     </Routes>
   );
