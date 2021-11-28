@@ -5,6 +5,7 @@ import Form from "../../constructs/form";
 import { ReactComponent as GenerateIbanIcon } from "../../../media/images/generate.svg";
 import { useNavigate } from "react-router-dom";
 import validateForm from "../../../tools/validateForm";
+import generateRandomNumber from "../../../tools/generateRandomNumber";
 
 const AddBankAccountSection = () => {
   const [bank, setBank] = useState("select");
@@ -81,10 +82,6 @@ const AddBankAccountSection = () => {
     }
   }
 
-  function generateRandomNumber() {
-    return Math.floor(Math.random() * (9 - 1 + 1) + 1);
-  }
-
   function generateIban() {
     if (bank === "select") {
       setTooltipText("Select a bank first");
@@ -100,6 +97,10 @@ const AddBankAccountSection = () => {
     }
   }
 
+  function onSkip() {
+    navigate("/stocks");
+  }
+
   return (
     <SectionWrapper>
       <SectionHeader>Add your first bank account</SectionHeader>
@@ -108,6 +109,7 @@ const AddBankAccountSection = () => {
         submitForm={submitForm}
         isLoading={isLoading}
         formElements={formElements}
+        onSkip={onSkip}
       />
     </SectionWrapper>
   );

@@ -10,6 +10,7 @@ const Form = ({
   formElements,
   isLoading,
   isMandatory,
+  onSkip,
 }) => (
   <FormWrapper>
     {formElements.map((formElement, i) => {
@@ -32,7 +33,11 @@ const Form = ({
     })}
     <ButtonGroup isMandatory={isMandatory}>
       {!isMandatory && (
-        <ButtonOutlined disabled={isLoading} color="venetianRed">
+        <ButtonOutlined
+          onClick={() => onSkip()}
+          disabled={isLoading}
+          color="venetianRed"
+        >
           Skip
         </ButtonOutlined>
       )}
