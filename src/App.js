@@ -1,4 +1,3 @@
-import "./App.css";
 import PersonalDetailsSection from "./components/sections/personal-details-section";
 import AddBankAccountSection from "./components/sections/add-bank-account-section";
 import AddStocksSection from "./components/sections/add-stocks-section";

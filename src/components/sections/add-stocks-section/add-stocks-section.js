@@ -4,12 +4,13 @@ import SectionHeader from "../../primitives/section-header";
 import ExpandableForm from "../../constructs/expandable-form";
 
 const AddStocksSection = () => {
+  const [expandedForm, setExpandedForm] = useState("form1");
+
   const [stocks, setStocks] = useState({
     form1: {
       market: "AEX",
       stock: "ADYEN",
       amount: "143",
-      expanded: true,
     },
   });
 
@@ -61,13 +62,14 @@ const AddStocksSection = () => {
   ];
 
   function onAdd(formId) {
+    const newForm = `form${Object.keys(stocks).length + 1}`;
+    setExpandedForm(newForm);
     setStocks((prevStocks) => ({
       ...prevStocks,
-      [`form${Object.keys(stocks).length + 1}`]: {
+      [newForm]: {
         market: "",
         stock: "",
         amount: "",
-        expanded: true,
       },
     }));
   }
@@ -79,11 +81,11 @@ const AddStocksSection = () => {
         return (
           <ExpandableForm
             key={i}
-            expanded={stock[1].expanded}
             formElements={formElements}
             data={stock[1]}
             formId={stock[0]}
             onAdd={onAdd}
+            expanded={expandedForm === stock[0]}
           />
         );
       })}

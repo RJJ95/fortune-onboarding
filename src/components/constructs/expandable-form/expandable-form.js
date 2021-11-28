@@ -15,10 +15,10 @@ const ExpandableForm = ({
   isDisabled,
   formElements,
   isLoading,
-  expanded,
   data,
   onAdd,
   formId,
+  expanded,
 }) => {
   return (
     <FormWrapper expanded={expanded}>
