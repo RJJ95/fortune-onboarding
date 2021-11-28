@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SectiontWrapper from "../../primitives/section-wrapper";
+import SectionWrapper from "../../primitives/section-wrapper";
 import SectionHeader from "../../primitives/section-header";
 import ExpandableForm from "../../constructs/expandable-form";
 
@@ -61,7 +61,7 @@ const AddStocksSection = () => {
     },
   ];
   return (
-    <SectiontWrapper>
+    <SectionWrapper>
       <SectionHeader>Add some stocks</SectionHeader>
       {stocks.map((stock, i) => (
         <ExpandableForm
@@ -71,7 +71,7 @@ const AddStocksSection = () => {
           data={stock}
         />
       ))}
-    </SectiontWrapper>
+    </SectionWrapper>
   );
 };
 
