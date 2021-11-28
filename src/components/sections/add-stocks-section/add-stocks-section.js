@@ -4,18 +4,19 @@ import SectionHeader from "../../primitives/section-header";
 import ExpandableForm from "../../constructs/expandable-form";
 
 const AddStocksSection = () => {
-  const [stocks, setStocks] = useState([
-    {
-      market: "",
-      stock: "",
-      amount: "",
+  const [stocks, setStocks] = useState({
+    form1: {
+      market: "AEX",
+      stock: "ADYEN",
+      amount: "143",
+      expanded: true,
     },
-  ]);
+  });
+
   const formElements = [
     {
       label: "Select a market",
       placeholder: "Select",
-      required: true,
       value: "",
       onChange: "",
       disabled: "",
@@ -34,7 +35,6 @@ const AddStocksSection = () => {
     {
       label: "Select a stock",
       placeholder: "Select",
-      required: true,
       value: "",
       onChange: "",
       disabled: "",
@@ -53,24 +53,40 @@ const AddStocksSection = () => {
     {
       label: "How many do you have",
       placeholder: "100",
-      required: true,
       value: "",
       onChange: "",
       disabled: "",
       type: "number",
     },
   ];
+
+  function onAdd(formId) {
+    setStocks((prevStocks) => ({
+      ...prevStocks,
+      [`form${Object.keys(stocks).length + 1}`]: {
+        market: "",
+        stock: "",
+        amount: "",
+        expanded: true,
+      },
+    }));
+  }
+
   return (
     <SectionWrapper>
       <SectionHeader>Add some stocks</SectionHeader>
-      {stocks.map((stock, i) => (
-        <ExpandableForm
-          key={i}
-          expanded={false}
-          formElements={formElements}
-          data={stock}
-        />
-      ))}
+      {Object.entries(stocks).map((stock, i) => {
+        return (
+          <ExpandableForm
+            key={i}
+            expanded={stock[1].expanded}
+            formElements={formElements}
+            data={stock[1]}
+            formId={stock[0]}
+            onAdd={onAdd}
+          />
+        );
+      })}
     </SectionWrapper>
   );
 };

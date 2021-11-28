@@ -16,10 +16,13 @@ const ExpandableForm = ({
   formElements,
   isLoading,
   expanded,
+  data,
+  onAdd,
+  formId,
 }) => {
   return (
     <FormWrapper expanded={expanded}>
-      <FormContainer>
+      <FormContainer expanded={expanded}>
         {formElements.map((formElement, i) => {
           const FormElement = getFormElement(formElement.type);
           return (
@@ -40,7 +43,7 @@ const ExpandableForm = ({
             Skip
           </ButtonOutlined>
           <ButtonSolid
-            onClick={null}
+            onClick={() => onAdd(formId)}
             disabled={isLoading || isDisabled}
             color="yellowGreen"
           >
@@ -56,7 +59,9 @@ const ExpandableForm = ({
         </ButtonGroup>
       </FormContainer>
       <SummaryContainer expanded={expanded}>
-        <Summary></Summary>
+        <Summary>
+          {data.market}, {data.stock}, {data.amount}
+        </Summary>
       </SummaryContainer>
     </FormWrapper>
   );

@@ -5,8 +5,9 @@ export const FormWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: ${({ theme }) => theme.shadow};
   min-width: 420px;
-  padding: ${({ expanded }) => (expanded ? "60px 80px" : "30px 20px")};
+  padding: ${({ expanded }) => (expanded ? "60px 80px" : "15px 20px")};
   transition: ${({ theme }) => theme.transition};
+  margin-bottom: 20px;
 `;
 
 export const ButtonGroup = styled.div`
@@ -20,6 +21,11 @@ export const FormContainer = styled.div`
   height: ${({ expanded }) => !expanded && "0"};
 `;
 
-export const SummaryContainer = styled.div``;
+export const SummaryContainer = styled.div`
+  height: ${({ expanded }) => expanded && "0"};
+  opacity: ${({ expanded }) => (expanded ? "0" : "1")};
+`;
 
-export const Summary = styled.h3``;
+export const Summary = styled.h3`
+  color: ${({ theme }) => theme.colors.silverMedal};
+`;
