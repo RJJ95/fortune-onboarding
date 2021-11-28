@@ -10,5 +10,6 @@ export const FormWrapper = styled.div`
 
 export const ButtonGroup = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ isMandatory }) =>
+    isMandatory ? "flex-end" : "space-between"};
 `;

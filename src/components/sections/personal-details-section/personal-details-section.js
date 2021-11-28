@@ -37,9 +37,9 @@ const PersonalDetailsSection = () => {
       if (!emailIsInvalid) {
         // Send data to backend
         setIsLoading(false);
-        navigate("/add-bank-account");
+        navigate("/online-banking");
       }
-    }, 5000);
+    }, 2000);
   }
 
   const formElements = [
@@ -89,6 +89,7 @@ const PersonalDetailsSection = () => {
         submitForm={submitForm}
         isLoading={isLoading}
         formElements={formElements}
+        isMandatory={true}
       />
     </SectionWrapper>
   );

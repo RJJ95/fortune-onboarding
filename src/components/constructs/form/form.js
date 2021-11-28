@@ -4,7 +4,13 @@ import ButtonSolid from "../../primitives/button-solid";
 import Loader from "../loader";
 import getFormElement from "../../../tools/getFormElement";
 
-const Form = ({ submitForm, isDisabled, formElements, isLoading }) => (
+const Form = ({
+  submitForm,
+  isDisabled,
+  formElements,
+  isLoading,
+  isMandatory,
+}) => (
   <FormWrapper>
     {formElements.map((formElement, i) => {
       const FormElement = getFormElement(formElement.type);
@@ -24,10 +30,12 @@ const Form = ({ submitForm, isDisabled, formElements, isLoading }) => (
         />
       );
     })}
-    <ButtonGroup>
-      <ButtonOutlined disabled={isLoading} color="venetianRed">
-        Skip
-      </ButtonOutlined>
+    <ButtonGroup isMandatory={isMandatory}>
+      {!isMandatory && (
+        <ButtonOutlined disabled={isLoading} color="venetianRed">
+          Skip
+        </ButtonOutlined>
+      )}
       <ButtonSolid
         onClick={() => submitForm()}
         disabled={isLoading || isDisabled}
