@@ -12,6 +12,7 @@ const AddBankAccountSection = () => {
   const [startingBalance, setStartingBalance] = useState(0);
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [tooltipText, setTooltipText] = useState("Generate");
 
   let navigate = useNavigate();
 
@@ -41,7 +42,7 @@ const AddBankAccountSection = () => {
       onChange: setIban,
       disabled: isLoading,
       Icon: <GenerateIbanIcon onClick={generateIban} />,
-      tooltipText: "Generate",
+      tooltipText: tooltipText,
     },
     {
       label: "Enter a starting balance",
@@ -67,7 +68,37 @@ const AddBankAccountSection = () => {
     }, 5000);
   }
 
-  function generateIban() {}
+  function getBankCode() {
+    switch (bank) {
+      case "ing":
+        return "ingb";
+      case "abn amro":
+        return "abna";
+      case "rabobank":
+        return "rabo";
+      default:
+        return "ingb";
+    }
+  }
+
+  function generateRandomNumber() {
+    return Math.floor(Math.random() * (9 - 1 + 1) + 1);
+  }
+
+  function generateIban() {
+    if (bank === "select") {
+      setTooltipText("Select a bank first");
+      setTimeout(() => setTooltipText("Generate"), 1500);
+    } else {
+      const checkDigits = `${generateRandomNumber()}${generateRandomNumber()}`;
+      let bankAccount = "";
+      for (let i = 0; i <= 10; i++) {
+        bankAccount = bankAccount + generateRandomNumber();
+      }
+      const generatedIban = `NL${checkDigits}${getBankCode().toUpperCase()}${bankAccount}`;
+      setIban(generatedIban);
+    }
+  }
 
   return (
     <SectionWrapper>
