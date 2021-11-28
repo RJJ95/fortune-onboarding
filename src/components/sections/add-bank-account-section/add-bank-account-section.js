@@ -8,7 +8,7 @@ import validateForm from "../../../tools/validateForm";
 import generateRandomNumber from "../../../tools/generateRandomNumber";
 
 const AddBankAccountSection = () => {
-  const [bank, setBank] = useState("select");
+  const [bank, setBank] = useState("");
   const [iban, setIban] = useState("");
   const [startingBalance, setStartingBalance] = useState(0);
   const [isDisabled, setIsDisabled] = useState(true);

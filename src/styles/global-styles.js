@@ -53,11 +53,11 @@ input, select {
   font-family: ${({ theme }) => theme.font};
   box-sizing: border-box;
   width: 100%;
-  
 }
 
 select {
   appearance: none;
+  cursor: pointer;
 }
 `;
 
