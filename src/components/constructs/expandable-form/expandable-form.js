@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   FormWrapper,
   ButtonGroup,
@@ -9,6 +10,7 @@ import ButtonOutlined from "../../primitives/button-outlined";
 import ButtonSolid from "../../primitives/button-solid";
 import Loader from "../loader";
 import getFormElement from "../../../tools/getFormElement";
+import validateForm from "../../../tools/validateForm";
 
 const ExpandableForm = ({
   submitForm,
@@ -22,6 +24,12 @@ const ExpandableForm = ({
   setStocks,
   stocks,
 }) => {
+  const [formIsValid, setFormIsValid] = useState(false);
+
+  useEffect(() => {
+    validateForm(Object.values(stocks[formId]), setFormIsValid);
+  });
+
   function handleChange(data, dataType) {
     setStocks((prevStocks) => ({
       ...prevStocks,
@@ -30,6 +38,7 @@ const ExpandableForm = ({
         [dataType]: data,
       },
     }));
+    setTimeout(() => console.log(stocks[formId]), 1000);
   }
 
   return (
@@ -56,7 +65,7 @@ const ExpandableForm = ({
           </ButtonOutlined>
           <ButtonSolid
             onClick={() => onAdd(formId)}
-            disabled={isLoading || isDisabled}
+            disabled={isLoading || formIsValid}
             color="yellowGreen"
           >
             Add

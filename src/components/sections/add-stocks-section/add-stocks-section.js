@@ -19,7 +19,6 @@ const AddStocksSection = () => {
       label: "Select a market",
       dataType: "market",
       placeholder: "Select",
-      value: "",
       disabled: "",
       type: "select",
       options: [
