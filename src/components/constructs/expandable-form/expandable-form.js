@@ -19,7 +19,19 @@ const ExpandableForm = ({
   onAdd,
   formId,
   expanded,
+  setStocks,
+  stocks,
 }) => {
+  function handleChange(data, dataType) {
+    setStocks((prevStocks) => ({
+      ...prevStocks,
+      [formId]: {
+        ...[formId],
+        [dataType]: data,
+      },
+    }));
+  }
+
   return (
     <FormWrapper expanded={expanded}>
       <FormContainer expanded={expanded}>
@@ -30,8 +42,8 @@ const ExpandableForm = ({
               key={i}
               label={formElement.label}
               placeholder={formElement.placeholder}
-              value={formElement.value}
-              onChange={formElement.onChange}
+              value={stocks[formId][formElement.dataType]}
+              onChange={(e) => handleChange(e, formElement.dataType)}
               disabled={formElement.disabled}
               type={formElement.type}
               options={formElement.options}

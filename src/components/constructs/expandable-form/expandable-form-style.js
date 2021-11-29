@@ -5,7 +5,7 @@ export const FormWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: ${({ theme }) => theme.shadow};
   min-width: 420px;
-  padding: ${({ expanded }) => (expanded ? "60px 80px" : "15px 20px")};
+  padding: ${({ expanded }) => (expanded ? "60px 80px" : "15px 80px")};
   transition: ${({ theme }) => theme.transition};
   margin-bottom: 20px;
 `;
@@ -24,6 +24,8 @@ export const FormContainer = styled.div`
 export const SummaryContainer = styled.div`
   height: ${({ expanded }) => expanded && "0"};
   opacity: ${({ expanded }) => (expanded ? "0" : "1")};
+  transition-delay: ${({ theme }) => theme.transition};
+  transition: ${({ theme }) => theme.transition};
 `;
 
 export const Summary = styled.h3`

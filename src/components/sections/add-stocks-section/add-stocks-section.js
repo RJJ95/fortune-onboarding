@@ -8,18 +8,18 @@ const AddStocksSection = () => {
 
   const [stocks, setStocks] = useState({
     form1: {
-      market: "AEX",
-      stock: "ADYEN",
-      amount: "143",
+      market: "",
+      stock: "",
+      amount: "",
     },
   });
 
   const formElements = [
     {
       label: "Select a market",
+      dataType: "market",
       placeholder: "Select",
       value: "",
-      onChange: "",
       disabled: "",
       type: "select",
       options: [
@@ -35,9 +35,8 @@ const AddStocksSection = () => {
     },
     {
       label: "Select a stock",
+      dataType: "stock",
       placeholder: "Select",
-      value: "",
-      onChange: "",
       disabled: "",
       type: "select",
       options: [
@@ -53,15 +52,14 @@ const AddStocksSection = () => {
     },
     {
       label: "How many do you have",
+      dataType: "amount",
       placeholder: "100",
-      value: "",
-      onChange: "",
       disabled: "",
       type: "number",
     },
   ];
 
-  function onAdd(formId) {
+  function onAdd() {
     const newForm = `form${Object.keys(stocks).length + 1}`;
     setExpandedForm(newForm);
     setStocks((prevStocks) => ({
@@ -86,6 +84,8 @@ const AddStocksSection = () => {
             formId={stock[0]}
             onAdd={onAdd}
             expanded={expandedForm === stock[0]}
+            setStocks={setStocks}
+            stocks={stocks}
           />
         );
       })}
